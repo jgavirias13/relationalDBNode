@@ -65,9 +65,9 @@ switch (command) {
     upArgumentos.forEach(arg => {
       const argumento = arg.split("=");
       clave = argumento[0].substring(2);
-      if(clave == "id"){
+      if (clave == "id") {
         id = argumento[1];
-      }else{
+      } else {
         updateData[clave] = argumento[1];
       }
     });
@@ -83,6 +83,20 @@ switch (command) {
       });
     break;
   case CRUD.DELETE:
+    const deleteArgs = args.slice(1)[0].split("=");
+    if (deleteArgs[0].substring(2) == "id") {
+      let id = deleteArgs[1];
+      db[entity]
+        .destroy({ where: { id: id } })
+        .then(() => {
+          console.log("Elemento eliminado");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      console.log("Por favor especificar un id");
+    }
     break;
   default:
     console.log("Operacion no reconocida");

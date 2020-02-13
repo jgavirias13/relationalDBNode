@@ -48,15 +48,39 @@ switch (command) {
 
     break;
   case CRUD.READ:
-    db[entity].findAll()
-      .then((entidades) => {
-          console.log(entidades);
+    db[entity]
+      .findAll()
+      .then(entidades => {
+        console.log(entidades);
       })
-      .catch((err) => {
-          console.log(err);
-      })
+      .catch(err => {
+        console.log(err);
+      });
     break;
   case CRUD.UPDATE:
+    updateData = {};
+    //Toma de argumentos para la operacion
+    upArgumentos = args.slice(1);
+    let id = "";
+    upArgumentos.forEach(arg => {
+      const argumento = arg.split("=");
+      clave = argumento[0].substring(2);
+      if(clave == "id"){
+        id = argumento[1];
+      }else{
+        updateData[clave] = argumento[1];
+      }
+    });
+
+    db[entity]
+      .update(updateData, { where: { id: id } })
+      .then(() => {
+        console.log("Elemento actualizado ID " + id);
+        console.log(updateData);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     break;
   case CRUD.DELETE:
     break;

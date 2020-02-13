@@ -1,0 +1,19 @@
+{
+  "name": "relationaldbnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgavirias13/relationalDBNode.git"
+  },
+  "author": "Juan Pablo Gaviria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jgavirias13/relationalDBNode/issues"
+  },
+  "homepage": "https://github.com/jgavirias13/relationalDBNode#readme"
+}
